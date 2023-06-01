@@ -91,9 +91,10 @@ exports.verifySignature = async (req, res) => {
 
   const signature = req.headers["x-razorpay-signature"];
 
+  // Done to check signature with the sercret
   const shasum = crypto.createHmac("sha256", webhookSecret);
   shasum.update(JSON.stringify(req.body));
-  const digest = shasum.digest("hex");
+  const digest = shasum.digest("hex"); // hashing done on a Input
 
   if (signature === digest) {
     console.log("Payment is Authorised");
