@@ -15,7 +15,7 @@ exports.auth = async (req, res, next) => {
     if (!token) {
       return res.status(401).json({
         success: false,
-        message: "Token is Not Present!",
+        message: "TOken is missing",
       });
     }
 
@@ -28,7 +28,7 @@ exports.auth = async (req, res, next) => {
       //verification - issue
       return res.status(401).json({
         success: false,
-        message: "Token is invalid",
+        message: "token is invalid",
       });
     }
     next();
